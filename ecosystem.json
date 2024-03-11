@@ -1,0 +1,29 @@
+{
+    "apps": [
+        {
+            "name": "RBClub LONGPOLL module",
+            "script": "./longpoll/lp",
+            "args": "56001",
+            "kill_timeout": 5000,
+            "error_file": "/dev/null",
+            "max_memory_restart": "100M"
+        },
+        {
+            "name": "RBClub DATABASE module",
+            "script": "./database/db",
+            "args": "56101",
+            "kill_timeout": 5000,
+            "error_file": "/dev/null",
+            "max_memory_restart": "100M"
+        },
+        {
+            "name": "RBClub MAIN module",
+            "script": "./RBClub.py",
+            "args": "-db 56101 -lp 56001",
+            "kill_timeout": 5000,
+            "interpreter": "python3.8",
+            "error_file": "/dev/null",
+            "max_memory_restart": "200M"
+        }
+    ]
+}

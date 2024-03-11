@@ -1,0 +1,442 @@
+{
+    "sections": [
+      {
+        "name": "profile",
+        "title": "Моя страница"
+      },
+      {
+        "name": "posts",
+        "title": "Записи на странице"
+      },
+      {
+        "name": "photos",
+        "title": "Фотографии"
+      },
+      {
+        "name": "contacts",
+        "title": "Связь со мной"
+      },
+      {
+        "name": "stories",
+        "title": "Истории"
+      },
+      {
+        "name": "lives",
+        "title": "Трансляции"
+      },
+      {
+        "description": "Если Вы закроете страницу, она будет доступна только Вашим друзьям.",
+        "name": "others",
+        "title": "Прочее"
+      }
+    ],
+    "settings": [
+      {
+        "key": "profile",
+        "section": "profile",
+        "supported_categories": [
+          "friends",
+          "only_me",
+          "some"
+        ],
+        "title": "Кто видит основную информацию моей страницы",
+        "type": "list",
+        "value": {
+          "category": "only_me"
+        }
+      },
+      {
+        "key": "photos_with",
+        "section": "photos",
+        "supported_categories": [
+          "friends",
+          "only_me",
+          "some"
+        ],
+        "title": "Кто видит фотографии, на которых меня отметили",
+        "type": "list",
+        "value": {
+          "category": "only_me"
+        }
+      },
+      {
+        "key": "photos_saved",
+        "section": "profile",
+        "supported_categories": [
+          "friends",
+          "only_me",
+          "some"
+        ],
+        "title": "Кто видит список моих сохранённых фотографий",
+        "type": "list",
+        "value": {
+          "category": "only_me"
+        }
+      },
+      {
+        "key": "groups",
+        "section": "profile",
+        "supported_categories": [
+          "friends",
+          "only_me",
+          "some"
+        ],
+        "title": "Кто видит список моих групп",
+        "type": "list",
+        "value": {
+          "category": "only_me"
+        }
+      },
+      {
+        "key": "audios",
+        "section": "profile",
+        "supported_categories": [
+          "friends",
+          "only_me",
+          "some"
+        ],
+        "title": "Кто видит список моих аудиозаписей",
+        "type": "list",
+        "value": {
+          "category": "only_me"
+        }
+      },
+      {
+        "key": "gifts",
+        "section": "profile",
+        "supported_categories": [
+          "friends",
+          "only_me",
+          "some"
+        ],
+        "title": "Кто видит список моих подарков",
+        "type": "list",
+        "value": {
+          "category": "only_me"
+        }
+      },
+      {
+        "key": "places",
+        "section": "photos",
+        "supported_categories": [
+          "friends",
+          "only_me",
+          "some"
+        ],
+        "title": "Кто видит местоположение моих фотографий",
+        "type": "list",
+        "value": {
+          "category": "only_me"
+        }
+      },
+      {
+        "key": "hidden_friends",
+        "section": "profile",
+        "supported_categories": [
+          "friends",
+          "only_me",
+          "hidden_friends_only",
+          "some"
+        ],
+        "title": "Кто видит моих скрытых друзей",
+        "type": "list",
+        "value": {
+          "category": "only_me"
+        }
+      },
+      {
+        "key": "wall",
+        "section": "posts",
+        "supported_categories": [
+          "friends",
+          "only_me",
+          "some"
+        ],
+        "title": "Кто видит чужие записи на моей странице",
+        "type": "list",
+        "value": {
+          "category": "only_me"
+        }
+      },
+      {
+        "key": "wall_send",
+        "section": "posts",
+        "supported_categories": [
+          "friends",
+          "only_me",
+          "some"
+        ],
+        "title": "Кто может оставлять записи на моей странице",
+        "type": "list",
+        "value": {
+          "category": "only_me"
+        }
+      },
+      {
+        "key": "photos_tagme",
+        "section": "photos",
+        "supported_categories": [
+          "friends",
+          "only_me",
+          "some"
+        ],
+        "title": "Кто может отмечать меня на фотографиях",
+        "type": "list",
+        "value": {
+          "category": "only_me"
+        }
+      },
+      {
+        "key": "mail_send",
+        "section": "contacts",
+        "supported_categories": [
+          "all",
+          "friends_of_friends",
+          "friends",
+          "nobody",
+          "some"
+        ],
+        "title": "Кто может писать мне личные сообщения",
+        "type": "list",
+        "value": {
+          "lists": {
+            "allowed": [
+              28
+            ]
+          }
+        }
+      },
+      {
+        "key": "appscall",
+        "section": "contacts",
+        "supported_categories": [
+          "friends",
+          "nobody",
+          "some"
+        ],
+        "title": "Кто может вызывать меня в приложениях",
+        "type": "list",
+        "value": {
+          "category": "nobody"
+        }
+      },
+      {
+        "key": "groups_invite",
+        "section": "contacts",
+        "supported_categories": [
+          "friends",
+          "nobody",
+          "some"
+        ],
+        "title": "Кто может приглашать меня в сообщества",
+        "type": "list",
+        "value": {
+          "category": "nobody"
+        }
+      },
+      {
+        "key": "apps_invite",
+        "section": "contacts",
+        "supported_categories": [
+          "friends",
+          "nobody",
+          "some"
+        ],
+        "title": "Кто может приглашать меня в приложения",
+        "type": "list",
+        "value": {
+          "category": "nobody"
+        }
+      },
+      {
+        "key": "friends_requests",
+        "section": "contacts",
+        "supported_categories": [
+          "all",
+          "friends_of_friends_only"
+        ],
+        "title": "Кто может отправлять мне заявки в друзья",
+        "type": "list",
+        "value": {
+          "category": "friends_of_friends_only"
+        }
+      },
+      {
+        "key": "search_by_reg_phone",
+        "section": "contacts",
+        "supported_categories": [
+          "all",
+          "friends_of_friends",
+          "nobody",
+          "some"
+        ],
+        "title": "Кто может найти мой профиль при импорте контактов",
+        "type": "list",
+        "value": {
+          "category": "nobody"
+        }
+      },
+      {
+        "key": "stories",
+        "section": "stories",
+        "supported_categories": [
+          "friends",
+          "only_me",
+          "some"
+        ],
+        "title": "Кто может видеть мои истории",
+        "type": "list",
+        "value": {
+          "category": "only_me"
+        }
+      },
+      {
+        "key": "stories_replies",
+        "section": "stories",
+        "supported_categories": [
+          "friends",
+          "nobody",
+          "some"
+        ],
+        "title": "Кто может отвечать на мои истории",
+        "type": "list",
+        "value": {
+          "category": "nobody"
+        }
+      },
+      {
+        "key": "stories_questions",
+        "section": "stories",
+        "supported_categories": [
+          "friends",
+          "only_me",
+          "some"
+        ],
+        "title": "Кто может отправлять мнения к моим историям",
+        "type": "list",
+        "value": {
+          "category": "only_me"
+        }
+      },
+      {
+        "key": "lives",
+        "section": "lives",
+        "supported_categories": [
+          "friends",
+          "only_me",
+          "some"
+        ],
+        "title": "Кто видит мои трансляции",
+        "type": "list",
+        "value": {
+          "category": "friends"
+        }
+      },
+      {
+        "key": "lives_replies",
+        "section": "lives",
+        "supported_categories": [
+          "friends",
+          "only_me",
+          "some"
+        ],
+        "title": "Кто может комментировать мои трансляции",
+        "type": "list",
+        "value": {
+          "category": "friends"
+        }
+      },
+      {
+        "key": "online",
+        "section": "online",
+        "supported_categories": [
+          "all",
+          "friends_and_contacts",
+          "only_me",
+          "some"
+        ],
+        "title": "",
+        "type": "list",
+        "value": {
+          "category": "only_me"
+        }
+      },
+      {
+        "key": "chat_invite_user",
+        "section": "contacts",
+        "supported_categories": [
+          "all",
+          "friends_of_friends",
+          "friends",
+          "some"
+        ],
+        "title": "Кто может приглашать меня в беседы",
+        "type": "list",
+        "value": {
+          "category": "friends"
+        }
+      },
+      {
+        "key": "vkrun_steps",
+        "section": "others",
+        "supported_categories": [
+          "friends",
+          "only_me",
+          "some"
+        ],
+        "title": "Кто может видеть мои шаги в «Шагах ВКонтакте»",
+        "type": "list",
+        "value": {
+          "category": "friends"
+        }
+      },
+      {
+        "key": "closed_profile",
+        "section": "others",
+        "supported_categories": [],
+        "title": "Закрытый профиль",
+        "type": "binary",
+        "value": {
+          "is_enabled": true
+        }
+      }
+    ],
+    "supported_categories": [
+      {
+        "title": "Все друзья",
+        "value": "friends"
+      },
+      {
+        "title": "Только я",
+        "value": "only_me"
+      },
+      {
+        "title": "Некоторые друзья",
+        "value": "some"
+      },
+      {
+        "title": "Скрытые друзья",
+        "value": "hidden_friends_only"
+      },
+      {
+        "title": "Все пользователи",
+        "value": "all"
+      },
+      {
+        "title": "Друзья и друзья друзей",
+        "value": "friends_of_friends"
+      },
+      {
+        "title": "Никто",
+        "value": "nobody"
+      },
+      {
+        "title": "Друзья друзей",
+        "value": "friends_of_friends_only"
+      },
+      {
+        "title": "Друзья и контакты",
+        "value": "friends_and_contacts"
+      }
+    ]
+  }
