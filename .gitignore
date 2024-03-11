@@ -131,6 +131,7 @@ test*.py
 *.log.backup
 LP.py
 *.bat
+!win_start.bat
 /server configs
 /longpoll/lp
 /longpoll/lp.exe
