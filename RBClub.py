@@ -52,10 +52,6 @@ aio_loop.create_task(async_fake_typer())
 
 aio_loop.create_task(group_bot_runner())
 
-from tg.user_bot.starter import async_tg_starter
-
-aio_loop.create_task(async_tg_starter())
-
 from database.client import method
 
 try:
