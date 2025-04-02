@@ -1,5 +1,3 @@
-// Да уж, когда я начинал писать эту лапшу,
-// было гораздо проще ориентироваться, не то, что сейчас...
 package main
 
 import (
@@ -16,7 +14,6 @@ import (
 	"strings"
 	"time"
 
-	clr "github.com/Elchinchel/colorizer"
 	"github.com/recoilme/pudge"
 )
 
@@ -130,11 +127,11 @@ func main() {
 	go backupper()
 	signal.Notify(quitSignal, os.Interrupt, os.Kill) // UNIX only
 	<-quitSignal
-	log.Println(clr.Colorize("Shutdown DB server...", clr.Y))
+	log.Println("Shutdown DB server...")
 	if err := pudge.CloseAll(); err != nil {
 		log.Println("Pudge Shutdown err:", err)
 	} else {
-		log.Println(clr.Colorize("Saved!", clr.G))
+		log.Println("Saved!")
 	}
 }
 
@@ -149,9 +146,9 @@ func backupper() {
 			}
 			err := pudge.BackupAll(folder)
 			if err == nil {
-				log.Println("DB backed up in " + clr.Colorize(folder, clr.G))
+				log.Println("DB backed up in " + folder)
 			} else {
-				log.Printf(clr.Colorize("DB backed up with error %s", clr.R), err)
+				log.Printf("DB backed up with error %s", err)
 			}
 			time.Sleep(60 * time.Minute)
 		}
@@ -183,7 +180,7 @@ func requestHandle(c net.Conn) {
 			if err != nil {
 				fmt.Println("connection writing error: ", err)
 			}
-			report("handler", clr.Colorize(r.(string), clr.R))
+			report("handler", r.(string))
 		}
 	}()
 	var data serverRequest
@@ -453,7 +450,7 @@ func mainListen() interface{} {
 	if err != nil {
 		log.Fatal("Listen error: ", err)
 	}
-	log.Println("DB server listening at port", clr.Colorize(port, clr.G))
+	log.Println("DB server listening at port", port)
 	for {
 		conn, err := ln.Accept()
 		if err != nil {
@@ -680,7 +677,7 @@ func settingsUpdate(uid int, sets settingsReq) {
 		IgnoreList:   make([]string, 0),
 		TrustedUsers: make([]int, 0)}
 	if err := settingsDB.Get(uid, &settings); err != nil {
-		report("settings(update)", clr.Colorize(fmt.Sprint("Error!", uid, "|", err), clr.R))
+		report("settings(update)", fmt.Sprint("Error!", uid, "|", err))
 	}
 	if sets.DelRequests != nil {
 		settings.DelRequests = *sets.DelRequests
@@ -743,7 +740,7 @@ func settingsGet(uid int) settings {
 		IgnoreList:   make([]string, 0),
 		TrustedUsers: make([]int, 0)}
 	if err := settingsDB.Get(uid, &settings); err != nil {
-		report("settings(GET)", clr.Colorize(fmt.Sprint("Error!", uid, "|", err), clr.R))
+		report("settings(GET)", fmt.Sprint("Error!", uid, "|", err))
 	}
 	return settings
 }
@@ -785,7 +782,7 @@ type accountReq struct {
 func accountUpdate(uid int, acc accountReq) {
 	var curAcc = account{MergedAccounts: make([]int, 0), Achievements: make([]string, 0)}
 	if err := accounts.Get(uid, &curAcc); err != nil {
-		report("account(update)", clr.Colorize(fmt.Sprint("Read error!", uid, "|", err), clr.R))
+		report("account(update)", fmt.Sprint("Read error!", uid, "|", err))
 	}
 	if acc.Email != nil {
 		curAcc.Email = *acc.Email
@@ -828,7 +825,7 @@ func accountUpdate(uid int, acc accountReq) {
 func accountGet(uid int) account {
 	var account = account{MergedAccounts: make([]int, 0), Achievements: make([]string, 0)}
 	if err := accounts.Get(uid, &account); err != nil {
-		report("account(GET)", clr.Colorize(fmt.Sprint("Error!", uid, "|", err), clr.R))
+		report("account(GET)", fmt.Sprint("Error!", uid, "|", err))
 	}
 	return account
 }
@@ -864,7 +861,7 @@ type tokens struct {
 func tokensUpdate(uid int, token tokensReq) error {
 	var tokens tokens
 	if err := tokenPool.Get(uid, &tokens); err != nil {
-		report("tokens(update)", clr.Colorize(fmt.Sprint("Error!", uid, "|", err), clr.R))
+		report("tokens(update)", fmt.Sprint("Error!", uid, "|", err))
 	}
 	if token.MainVK != nil {
 		tokens.MainVK = *token.MainVK
@@ -880,7 +877,7 @@ func tokensUpdate(uid int, token tokensReq) error {
 
 func tokensGet(uid int) (token tokens) {
 	if err := tokenPool.Get(uid, &token); err != nil {
-		report("tokens(GET)", clr.Colorize(fmt.Sprint("Error!", uid, "|", err), clr.R))
+		report("tokens(GET)", fmt.Sprint("Error!", uid, "|", err))
 	}
 	return token
 }
@@ -983,7 +980,7 @@ type sessionTG struct {
 func sessionTGUpdate(uid int, session tokensReq) error {
 	var ses sessionTG
 	if err := sessionTgDB.Get(uid, &ses); err != nil {
-		report("TG tokens(update)", clr.Colorize(fmt.Sprint("Error!", uid, "|", err), clr.R))
+		report("TG tokens(update)", fmt.Sprint("Error!", uid, "|", err))
 	}
 	if session.Session != nil {
 		ses.Session = *session.Session
@@ -993,7 +990,7 @@ func sessionTGUpdate(uid int, session tokensReq) error {
 
 func sessionTGGet(uid int) (session sessionTG) {
 	if err := sessionTgDB.Get(uid, &session); err != nil {
-		report("TG tokens(GET)", clr.Colorize(fmt.Sprint("Error!", uid, "|", err), clr.R))
+		report("TG tokens(GET)", fmt.Sprint("Error!", uid, "|", err))
 	}
 	return session
 }
@@ -1008,7 +1005,7 @@ type settingsTG struct {
 func settingsTGUpdate(uid int, sets settingsReq) {
 	var settings = settingsTG{}
 	if err := settingsTgDB.Get(uid, &settings); err != nil {
-		report("settings(update)", clr.Colorize(fmt.Sprint("Error!", uid, "|", err), clr.R))
+		report("settings(update)", fmt.Sprint("Error!", uid, "|", err))
 	}
 	if sets.Nickname != nil {
 		settings.Nickname = *sets.Nickname
@@ -1024,7 +1021,7 @@ func settingsTGUpdate(uid int, sets settingsReq) {
 func settingsTGGet(uid int) settingsTG {
 	var settings = settingsTG{}
 	if err := settingsTgDB.Get(uid, &settings); err != nil {
-		report("settings(GET)", clr.Colorize(fmt.Sprint("Error!", uid, "|", err), clr.R))
+		report("settings(GET)", fmt.Sprint("Error!", uid, "|", err))
 	}
 	return settings
 }
@@ -1037,7 +1034,7 @@ type accountTG struct {
 func accountTGUpdate(uid int, sets accountReq) {
 	var acc = accountTG{}
 	if err := accountsTgDB.Get(uid, &acc); err != nil {
-		report("account (update)", clr.Colorize(fmt.Sprint("Error!", uid, "|", err), clr.R))
+		report("account (update)", fmt.Sprint("Error!", uid, "|", err))
 	}
 	if sets.VKbind != nil {
 		acc.VKbind = *sets.VKbind
@@ -1053,7 +1050,7 @@ func accountTGUpdate(uid int, sets accountReq) {
 func accountTGGet(uid int) accountTG {
 	var acc = accountTG{}
 	if err := accountsTgDB.Get(uid, &acc); err != nil {
-		report("TG account(GET)", clr.Colorize(fmt.Sprint("Error!", uid, "|", err), clr.R))
+		report("TG account(GET)", fmt.Sprint("Error!", uid, "|", err))
 	}
 	return acc
 }
